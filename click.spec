@@ -4,6 +4,7 @@ Name:		click
 Version:	22_03_2004_one
 Release:	0.1
 License:	MIT
+URL:		http://pdos.lcs.mit.edu/click/
 Group:		Networking/Admin
 Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs_%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
