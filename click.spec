@@ -97,5 +97,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/%{name}/*.h
 %{_includedir}/%{name}/standard/*.hh
 %{_includedir}/%{name}net/*.h
-%{_includedir}/%{name}tool/*.h
+%{_includedir}/%{name}tool/*.hh
 %{_libdir}/*.a
