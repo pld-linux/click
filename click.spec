@@ -1,13 +1,12 @@
 Summary:	Click Modular Router
 Summary(pl):	Click - modularny router
 Name:		click
-Version:	1.4.1
+Version:	1.4.2
 Release:	0.1
 License:	MIT
 Group:		Networking/Admin
 Source0:	http://amsterdam.lcs.mit.edu/click/%{name}-%{version}.tar.gz
-# Source0-md5:	bf217680a034f524c74484d4141b79b2
-Patch0:		%{name}-DESTDIR.patch
+# Source0-md5:	6b970e4b3606f8058ce9d1a9ab156732
 URL:		http://amsterdam.lcs.mit.edu/click/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -54,7 +53,6 @@ Pliki programistyczne dla modularnego routera Click!.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__autoconf}
