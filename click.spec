@@ -1,28 +1,30 @@
 Summary:	Click Modular Router
 Summary(pl):	Click - modularny router
 Name:		click
-Version:	22_03_2004_one
+Version:	1.4.1
 Release:	0.1
 License:	MIT
 Group:		Networking/Admin
-Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs_%{version}.tar.gz
-# Source0-md5:	a31f932eeb2b285d294f7bef70bac7a3
-URL:		http://pdos.lcs.mit.edu/click/
+Source0:	http://amsterdam.lcs.mit.edu/click/%{name}-%{version}.tar.gz
+# Source0-md5:	bf217680a034f524c74484d4141b79b2
+Patch0:		%{name}-DESTDIR.patch
+URL:		http://amsterdam.lcs.mit.edu/click/
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Click is a modular software router developed by MIT LCS Parallel and 
-Distributed Operating Systems group, Mazu Networks, the ICSI Center for 
-Internet Research, and now UCLA. Click routers are flexible, configurable,
-and easy to understand. 
+Click is a modular software router developed by MIT LCS Parallel and
+Distributed Operating Systems group, Mazu Networks, the ICSI Center
+for Internet Research, and now UCLA. Click routers are flexible,
+configurable, and easy to understand.
 
-A Click router is an interconnected collection of modules called elements; 
-elements control every aspect of the routers behavior, from communicating 
-with devices to packet modification to queueing, dropping policies and packet 
-scheduling. Individual elements can have surprisingly powerful behavior, and 
-it's easy to write new ones in C++. You write a router configuration by 
-gluing elements together with a simple language.
+A Click router is an interconnected collection of modules called
+elements; elements control every aspect of the routers behavior, from
+communicating with devices to packet modification to queueing,
+dropping policies and packet scheduling. Individual elements can have
+surprisingly powerful behavior, and it's easy to write new ones in
+C++. You write a router configuration by gluing elements together with
+a simple language.
 
 %description -l pl
 Click to modularny router rozwijany przez grupê MIT LCS Parallel and
@@ -37,13 +39,22 @@ porzucania oraz schedulingu pakietów. Poszczególne elementy mog± mieæ
 zaskakuj±co potê¿ne zachowanie i ³atwo pisaæ nowe w C++. Konfiguracj±
 routera tworzy siê przez sklejanie elementów w prostym jêzyku.
 
+%package devel
+Summary:	development files for Click! modular router
+Group:		Development/Libraries
+
+%description devel
+development files for Click! modular router
+
 %prep
-%setup -q -n one
+%setup -q
+%patch0 -p1
 
 %build
 %{__autoconf}
 %{__aclocal}
 %configure \
+	--disable-linuxmodule \
 	--enable-nsclick \
 	--enable-snmp \
 	--enable-analysis \
@@ -65,18 +76,26 @@ routera tworzy siê przez sklejanie elementów w prostym jêzyku.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,/bin}
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-#install arping clockdiff rdisc tracepath tracepath6 traceroute6 \
-#	$RPM_BUILD_ROOT%{_sbindir}
-
-#install ping ping6 $RPM_BUILD_ROOT/bin
-
-install doc/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
-echo ".so tracepath.8" > $RPM_BUILD_ROOT%{_mandir}/man8/tracepath6.8
+#echo ".so tracepath.8" > $RPM_BUILD_ROOT%{_mandir}/man8/tracepath6.8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_mandir}/man8/*
+%attr(755,root,root) %{_bindir}/*
+%{_mandir}/man*/*
+%{_datadir}/%{name}/elementmap.xml
+#/usr/share/click/srcdir
+%{_infodir}/click.info.gz
+
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/%{name}/*.hh
+%{_includedir}/%{name}/*.h
+%{_includedir}/%{name}/standard/*.hh
+%{_includedir}/%{name}net/*.h
+%{_includedir}/%{name}tool/*.h
+%{_libdir}/*.a
