@@ -1,11 +1,11 @@
 Summary:	Click Modular Router
+Summary(pl):	Click modularny router
 Name:		click
-Version:	15_03_2004_one
+Version:	22_03_2004_one
 Release:	0.1
 License:	MIT
 Group:		Networking/Admin
-Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs-15-03-2004-one.tar.gz
-# Source0-md5:	eaab9e4c261d42ee20404acee4c45275
+Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs_%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
