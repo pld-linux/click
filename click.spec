@@ -1,25 +1,26 @@
 Summary:	Click Modular Router
 Name:		click
-Version:	1.3
-%define pre 1
-Release:	0.%{pre}.0
+Version:	15_03_2004_one
+Release:	0.1
 License:	MIT
 Group:		Networking/Admin
-Source0:	http://www.pdos.lcs.mit.edu/click/%{name}-%{version}pre%{pre}.tar.gz
-# Source0-md5:	4ab6660d7c0753cfec8bd3df49835f25
+Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs-15-03-2004-one.tar.gz
+# Source0-md5:	eaab9e4c261d42ee20404acee4c45275
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Click Modular Router Project
 
-%prep
-%setup  -q -n %{name}-%{version}pre%{pre}
+%description -l pl
+Click projekt modularnego routera
 
+%prep
+%setup  -q -n one
 
 %build
 %{__autoconf}
 %{__aclocal}
-%configure
+%configure	\
   --enable-nsclick \
   --enable-snmp \
   --enable-analysis \
@@ -28,8 +29,9 @@ Click Modular Router Project
   --enable-etherswitch \
   --enable-radio \
   --enable-local \
-  --enable-test \
-#  --enable-grid        #   include Grid elements (see FAQ)
+  --enable-test  \
+  --enable-grid        #   include Grid elements (see FAQ)
+#  --disable-int64	\
 
 # empty LDLIBS - don't link with -lresolv, it's not necessary
 %{__make} \
