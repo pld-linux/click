@@ -7,6 +7,7 @@ License:	MIT
 URL:		http://pdos.lcs.mit.edu/click/
 Group:		Networking/Admin
 Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs_%{version}.tar.gz
+# Source0-md5:	a31f932eeb2b285d294f7bef70bac7a3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 BuildRequires:	libstdc++-devel
