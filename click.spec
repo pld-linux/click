@@ -69,9 +69,9 @@ Pliki programistyczne dla modularnego routera Click!.
 	--enable-etherswitch \
 	--enable-radio \
 	--enable-local \
-	--enable-test  \
-	--enable-grid        #   include Grid elements (see FAQ)
-#  --disable-int64	\
+	--enable-test \
+	--enable-grid	# include Grid elements (see FAQ)
+#	--disable-int64	\
 
 # empty LDLIBS - don't link with -lresolv, it's not necessary
 %{__make} \
