@@ -9,6 +9,8 @@ Source0:	http://amsterdam.lcs.mit.edu/click/%{name}-%{version}.tar.gz
 # Source0-md5:	bf217680a034f524c74484d4141b79b2
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://amsterdam.lcs.mit.edu/click/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,11 +42,15 @@ zaskakuj±co potê¿ne zachowanie i ³atwo pisaæ nowe w C++. Konfiguracj±
 routera tworzy siê przez sklejanie elementów w prostym jêzyku.
 
 %package devel
-Summary:	development files for Click! modular router
+Summary:	Development files for Click! modular router
+Summary(pl):	Pliki programistyczne dla modularnego routera Click!
 Group:		Development/Libraries
 
 %description devel
-development files for Click! modular router
+Development files for Click! modular router.
+
+%description devel -l pl
+Pliki programistyczne dla modularnego routera Click!.
 
 %prep
 %setup -q
@@ -76,7 +82,9 @@ development files for Click! modular router
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,/bin}
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 #echo ".so tracepath.8" > $RPM_BUILD_ROOT%{_mandir}/man8/tracepath6.8
 
@@ -89,13 +97,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 %{_datadir}/%{name}/elementmap.xml
 #/usr/share/click/srcdir
-%{_infodir}/click.info.gz
+%{_infodir}/click.info*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/%{name}/*.hh
-%{_includedir}/%{name}/*.h
-%{_includedir}/%{name}/standard/*.hh
-%{_includedir}/%{name}net/*.h
-%{_includedir}/%{name}tool/*.hh
+%dir %{_includedir}/click
+%{_includedir}/click/*.hh
+%{_includedir}/click/*.h
+%dir %{_includedir}/click/standard
+%{_includedir}/click/standard/*.hh
+%dir %{_includedir}/clicknet
+%{_includedir}/clicknet/*.h
+%dir %{_includedir}/clicktool
+%{_includedir}/clicktool/*.hh
 %{_libdir}/*.a
