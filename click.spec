@@ -10,10 +10,22 @@ Source0:	http://duch.mimuw.edu.pl/~hunter/%{name}-cvs_%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Click Modular Router Project
+Click is a modular software router developed by MIT LCS Parallel and 
+Distributed Operating Systems group, Mazu Networks, the ICSI Center for 
+Internet Research, and now UCLA. Click routers are flexible, configurable,
+and easy to understand. 
+
+A Click router is an interconnected collection of modules called elements; 
+elements control every aspect of the routers behavior, from communicating 
+with devices to packet modification to queueing, dropping policies and packet 
+scheduling. Individual elements can have surprisingly powerful behavior, and 
+it's easy to write new ones in C++. You write a router configuration by 
+gluing elements together with a simple language.
 
 %description -l pl
-Click projekt modularnego routera
+Click to modularny  router.
+
+BLA BLA BLA niech ktos to przetulaczy, ja ide spac.
 
 %prep
 %setup  -q -n one
