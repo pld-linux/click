@@ -24,10 +24,10 @@ scheduling. Individual elements can have surprisingly powerful behavior, and
 it's easy to write new ones in C++. You write a router configuration by 
 gluing elements together with a simple language.
 
-%description -l pl
-Click to modularny  router.
-
-BLA BLA BLA niech ktos to przetulaczy, ja ide spac.
+#%description -l pl
+#Click to modularny  router.
+#
+#BLA BLA BLA niech ktos to przetulaczy, ja ide spac.
 
 %prep
 %setup  -q -n one
