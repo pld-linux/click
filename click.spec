@@ -1,5 +1,5 @@
 Summary:	Click Modular Router
-Summary(pl.UTF-8):   Click - modularny router
+Summary(pl.UTF-8):	Click - modularny router
 Name:		click
 Version:	1.4.3
 Release:	0.1
@@ -43,7 +43,7 @@ routera tworzy się przez sklejanie elementów w prostym języku.
 
 %package devel
 Summary:	Development files for Click! modular router
-Summary(pl.UTF-8):   Pliki programistyczne dla modularnego routera Click!
+Summary(pl.UTF-8):	Pliki programistyczne dla modularnego routera Click!
 Group:		Development/Libraries
 
 %description devel
